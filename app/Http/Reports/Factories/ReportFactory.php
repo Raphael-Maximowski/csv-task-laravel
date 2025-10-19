@@ -2,11 +2,12 @@
 
 // app/Reports/Factories/ReportFactory.php
 
-namespace App\Reports\Factories;
+namespace App\Http\Reports\Factories;
 
-use App\Interfaces\ReportInterface;
-use App\Reports\Implementations\CsvReport;
-use App\Reports\Implementations\PdfReport;
+use App\Http\Interfaces\ReportInterface;
+use App\Http\Reports\Implementations\CsvReport;
+use App\Http\Reports\Implementations\PdfReport;
+use App\Http\Reports\Implementations\JsonReport;
 use InvalidArgumentException;
 
 class ReportFactory
@@ -20,13 +21,15 @@ class ReportFactory
 */
 public function createReport(string $type): ReportInterface
 {
-switch (strtolower($type)) {
-case 'pdf':
-return new PdfReport();
-case 'csv':
-return new CsvReport();
-default:
-throw new InvalidArgumentException("Tipo de relatório `{$type}` não suportado");
-}
+    switch (strtolower($type)) {
+        case 'pdf':
+            return new PdfReport();
+        case 'csv':
+            return new CsvReport();
+        case 'json':
+            return new JsonReport();
+        default:
+            throw new InvalidArgumentException("Tipo de relatório `{$type}` não suportado");
+    }
 }
 }

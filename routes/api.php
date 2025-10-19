@@ -5,4 +5,4 @@
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/reports/{type}', [ReportController::class, 'download&']);
+Route::get('/reports/{type}', [ReportController::class, 'download']);

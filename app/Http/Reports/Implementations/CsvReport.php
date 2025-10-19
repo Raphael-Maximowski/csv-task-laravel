@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Reports\Implementations;
+namespace App\http\Reports\Implementations;
 
-use App\Interfaces\ReportInterface;
+use App\Http\Interfaces\ReportInterface;
 
 class CsvReport implements ReportInterface
 {
     public function generate(array $data): string
     {
-        $output = "id,Nome\n";
+        $output = "\nid | Nome\n";
 
         foreach ($data as $item) {
-        $output .= "{$item['id']},{$item['name']}";
+            $output .= "\n{$item['id']} | {$item['name']}";
         }
 
         return "Conteudo CSV Gerado: ". $output;
